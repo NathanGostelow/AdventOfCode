@@ -7,7 +7,7 @@ import React from 'react';
 // import {aocFunction5_1, aocFunction5_2} from './day5';
 // import {aocFunction6_1, aocFunction6_2} from './day6';
 // import {aocFunction7_1, aocFunction7_2} from './day7';
-import {aocFunction8_1} from './day8';
+import {aocFunction8_1, aocFunction8_2} from './day8';
 
 const AdventOfCode = () => {
     // const answer = aocFunction1_1();
@@ -24,9 +24,10 @@ const AdventOfCode = () => {
     // const answer12 = aocFunction6_2();
     // const answer13 = aocFunction7_1();
     // const answer14 = aocFunction7_2();
-    const answer15 = aocFunction8_1();
+    // const answer15 = aocFunction8_1();
+    const answer16 = aocFunction8_2();
 
-    return answer15
+    return answer16
 }
 
 export default AdventOfCode;
