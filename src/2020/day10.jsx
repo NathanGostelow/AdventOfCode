@@ -29,10 +29,44 @@ const getDifferences = (input) => {
     return differencesMultiplied;
 }
 
+
+const getAllSetsOfPermutations = (input) => {
+    const inputToSearch = input.slice(0);
+    const paths = [ ...Array(inputToSearch.length).keys() ].map( i => 0);
+    for(let i = 0; i < inputToSearch.length; i++){
+        const currentVal = inputToSearch[i];
+        const firstAfter = inputToSearch[i+1]
+        const secondAfter = inputToSearch[i+2];
+        const thirdAfter = inputToSearch[i+3];
+
+        paths[i] = paths[i] === 0 ? 1 : paths[i];
+        const currentPath = paths[i];
+        
+        if(firstAfter - currentVal <= 3) paths[i+1] =  currentPath + paths[i+1]; 
+        if(secondAfter - currentVal <= 3) paths[i+2] = currentPath + paths[i+2]; 
+        if(thirdAfter - currentVal <= 3) paths[i+3] =  currentPath + paths[i+3]; 
+
+    }
+    
+    return paths[paths.length-1]
+}
+
 export const aocFunction10_1 = () => {
     // const adapters = getAdapters(testInput);
     // const adapters = getAdapters(testInput2);
+    // const adapters = getAdapters(input);
+    // const answer = getDifferences(adapters);
     const adapters = getAdapters(input);
     const answer = getDifferences(adapters);
+    return answer;    
+}
+
+export const aocFunction10_2 = () => {
+    // const adapters = getAdapters(testInput);
+    // const adapters = getAdapters(testInput2);
+    // const adapters = getAdapters(input);
+    // const answer = getDifferences(adapters);
+    const adapters = getAdapters(input);
+    const answer = getAllSetsOfPermutations(adapters);
     return answer;    
 }
