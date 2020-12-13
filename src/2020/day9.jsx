@@ -27,10 +27,48 @@ const getFirstInvalidValue = (data, preambleSize) => {
     return invalidValue;
 }
 
+const getContigousListSummed = (data, numberToSum) => {
+    let summedVal;
+    const indices = {start: 0, end: 0};
+    for(let i = 0; i < data.length; i++) {
+        let sum = 0;
+        const sumArray = [];
+        for(let j = i; j <  data.length; j++) {
+            if(sum < numberToSum) {
+                sum += data[j]; 
+            sumArray.push(data[j])
+
+            }
+            if(sum > numberToSum) break;
+        }
+        console.log(sum, 'indextostart: ', i, sumArray);
+        if(sum === numberToSum) {
+            summedVal = sumArray;
+            break;
+        }
+    }
+    const max = Math.max(...summedVal);
+    const min = Math.min(...summedVal);
+    const totalSum = max + min;
+    console.log(max, min, totalSum);
+    return totalSum;
+}
+
 export const aocFunction9_1 = () => {
     // const parsedData = parseData(testInput);
     // const answer = getFirstInvalidValue(parsedData, 5);
     const parsedData = parseData(input);
     const answer = getFirstInvalidValue(parsedData, 25);
     return answer;
+}
+
+export const aocFunction9_2 = () => {
+    // const parsedData = parseData(testInput);
+    // const invalidValue = getFirstInvalidValue(parsedData, 5);
+    // const answer = getContigousListSummed(parsedData, invalidValue);
+    const parsedData = parseData(input);
+    const invalidValue = getFirstInvalidValue(parsedData, 25);
+    const answer = getContigousListSummed(parsedData, invalidValue);
+
+    return answer
 }
